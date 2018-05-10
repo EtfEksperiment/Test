@@ -30,9 +30,8 @@
             @endif
 
             <div class="content">
-                <h2>This Task belongs to {{$data->research->name}} Research</h2>
-                <h2>Experiments for Task {{$data->name}}</h2>
-                @if(count($data->experiment))
+                <h2>Tasks for Research {{$data->name}}</h2>
+                @if(count($data->tasks))
                 <table class="table">
                     <thead>
                       <tr>
@@ -41,16 +40,16 @@
                       </tr>
                     </thead>
                     <tbody>
-                    @foreach ($data->experiment as $experiment)
+                    @foreach ($data->tasks as $task)
                         <tr>
-                            <td>{{ $experiment->name }}</td>
-                            <td>{{ $experiment->comment }}</td>
+                            <td>{{ $task->name }}</td>
+                            <td>{{ $task->description }}</td>
                         </tr>
                     @endforeach
                     </tbody>
                 </table>
                 @else
-                <p>There is no experiments for this task</p>
+                <p>There is no task for this task</p>
                 @endif
             </div>
         </div>

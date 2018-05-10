@@ -28,6 +28,8 @@ class TaskController extends Controller
     public function create()
     {
         //
+        $researches = \App\Research::all();
+        return view('task_create', ['researches' => $researches]);
     }
 
     /**
@@ -39,6 +41,13 @@ class TaskController extends Controller
     public function store(Request $request)
     {
         //
+        $task = new Task;
+
+        $task->name = $request->name;
+        $task->comment = $request->comment;
+
+        $task->save();
+        return redirect()->route('task.index');
     }
 
     /**

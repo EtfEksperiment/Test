@@ -18,3 +18,4 @@ Route::get('/', function () {
 
 Route::resource('experiment', 'ExperimentController');
 Route::resource('task', 'TaskController');
+Route::resource('research', 'ResearchController');

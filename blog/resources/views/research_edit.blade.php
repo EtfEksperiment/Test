@@ -78,15 +78,11 @@
             @endif
 
             <div class="content">
-                <form action="{{ route('task.store') }}" method="post">
+                <form action="{{ route('research.update', $data->id) }}" method="post">
                     {{ csrf_field() }}
-                    <input type="text" name="name" placeholder="Marka">
-                    <input type="text" name="comment" placeholder="Model">
-                    <select name="research">
-                        @foreach ($researches as $research)
-                            <option value="{{ $research->id }}">{{ $research->name }}</option>
-                        @endforeach
-                    </select>
+                    {{ method_field('PUT') }}
+                    <input type="text" name="name" value="{{ $data->name}}" placeholder="Marka">
+                    <input type="hidden" name="id" value="{{ $data->id}}">
                     <input type="submit" value="Osadź">
                 </form>
             </div>

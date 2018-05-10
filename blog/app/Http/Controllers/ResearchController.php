@@ -1,10 +1,11 @@
 <?php
 
 namespace App\Http\Controllers;
-use Illuminate\Http\Request;
-use App\Experiment;
 
-class ExperimentController extends Controller
+use App\Research;
+use Illuminate\Http\Request;
+
+class ResearchController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -13,15 +14,8 @@ class ExperimentController extends Controller
      */
     public function index()
     {
-        
-
-        $experiments = Experiment::all();
-        return view('experiment_index', ['data' => $experiments]);
-        /*foreach ($experiments as $experiment) {
-            echo $experiment->name;
-            echo '<br>';
-            echo $experiment->comment;
-        }*/
+        $researches = \App\Research::all();
+        return view('research_index', ['data' => $researches]);
     }
 
     /**
@@ -31,8 +25,7 @@ class ExperimentController extends Controller
      */
     public function create()
     {
-        $tasks = \App\Task::all();
-        return view('experiment_create', ['tasks' => $tasks]);
+        return view('research_create');
     }
 
     /**
@@ -43,13 +36,11 @@ class ExperimentController extends Controller
      */
     public function store(Request $request)
     {
-        $experiment = new Experiment;
-
-        $experiment->name = $request->name;
-        $experiment->comment = $request->comment;
-
-        $experiment->save();
-        return redirect()->route('experiment.index');
+        $research = new Research;
+        $research->name = $request->name;
+        
+        $research->save();
+        return redirect()->route('research.index');
     }
 
     /**
@@ -58,11 +49,9 @@ class ExperimentController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Experiment $experiment)
+    public function show(Research $research)
     {
-        //$post = \App\Experiment::find($id);
-        //dd($experiment->task);
-        return view('experiment_show', ['data' => $experiment]);
+        return view('research_show', ['data' => $research]);
     }
 
     /**
@@ -71,11 +60,9 @@ class ExperimentController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Experiment $experiment)//($id)
+    public function edit($id)
     {
         //
-        //$experiment = \App\Experiment::find($id);
-        return view('experiment_edit', ['data' => $experiment]);
     }
 
     /**
@@ -88,12 +75,6 @@ class ExperimentController extends Controller
     public function update(Request $request, $id)
     {
         //
-        $experiment = \App\Experiment::find($id);
-        $experiment->name = $request->name;
-        $experiment->comment = $request->comment;
-        $experiment->save();
-        
-        return redirect()->route('experiment.index');
     }
 
     /**
