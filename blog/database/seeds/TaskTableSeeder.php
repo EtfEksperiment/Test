@@ -16,7 +16,8 @@ class TaskTableSeeder extends Seeder
 	            'name' => str_random(10),
 	            'description' => str_random(10),
 	            'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
-	            'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
+	            'updated_at' => Carbon::now()->format('Y-m-d H:i:s'),
+                'research_id' => rand(1,9)
 	        ]);
     	}
     }
