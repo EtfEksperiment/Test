@@ -9,6 +9,11 @@ class Experiment extends Model
     //
     public function task()
     {
-        return $this->belongsToMany('App\Task');
+        return $this->belongsTo('App\Task');
+    }
+
+    public function research()
+    {
+        return $this->belongsTo('App\Research');
     }
 }

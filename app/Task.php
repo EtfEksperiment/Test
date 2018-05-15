@@ -8,7 +8,7 @@ class Task extends Model
 {
     public function experiment()
 	{
-    	return $this->belongsToMany('App\Experiment');
+    	return $this->hasMany('App\Experiment');
 	}
 	public function research()
 	{

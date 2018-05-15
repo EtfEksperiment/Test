@@ -19,3 +19,10 @@ Route::get('/', function () {
 Route::resource('experiment', 'ExperimentController');
 Route::resource('task', 'TaskController');
 Route::resource('research', 'ResearchController');
+Auth::routes();
+
+Route::get('/home', 'ResearchController@index');
+
+
+Route::get('/research/{research}/experiments', 'ResearchExperimentsController@index')->name('research.experiments');
+

@@ -30,27 +30,21 @@
             @endif
 
             <div class="content">
-                <h2>Experiments for Task {{$data->name}}</h2>
-                @if(count($data->task))
+                <h2>Experiments for Task <a href="{{route('task.show', $data->task)}}">{{$data->task->name}}</a></h2>
                 <table class="table">
                     <thead>
                       <tr>
                         <th>Name</th>
-                        <th>Description</th>
+                        <th>Comment</th>
                       </tr>
                     </thead>
                     <tbody>
-                    @foreach ($data->task as $task)
                         <tr>
-                            <td>{{ $task->name }}</td>
-                            <td>{{ $task->description }}</td>
+                            <td>{{ $data->name }}</td>
+                            <td>{{ $data->comment }}</td>
                         </tr>
-                    @endforeach
                     </tbody>
                 </table>
-                @else
-                <p>There is no task for this task</p>
-                @endif
             </div>
         </div>
     </body>

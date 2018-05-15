@@ -42,7 +42,7 @@
                     <tbody>
                     @foreach ($data->tasks as $task)
                         <tr>
-                            <td>{{ $task->name }}</td>
+                            <td><a href="{{ route('task.show', $task )}}">{{ $task->name }}</a></td>
                             <td>{{ $task->description }}</td>
                         </tr>
                     @endforeach

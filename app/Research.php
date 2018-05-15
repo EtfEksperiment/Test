@@ -10,4 +10,9 @@ class Research extends Model
     {
         return $this->hasMany('App\Task');
     }
+
+    public function experiments()
+    {
+        return $this->hasMany('App\Experiment');
+    }
 }
