@@ -19,6 +19,7 @@ Route::get('/', function () {
 Route::resource('experiment', 'ExperimentController');
 Route::resource('task', 'TaskController');
 Route::resource('research', 'ResearchController');
+Route::resource('participant', 'ParticipantController');
 Auth::routes();
 
 Route::get('/home', 'ResearchController@index');
@@ -26,3 +27,7 @@ Route::get('/home', 'ResearchController@index');
 
 Route::get('/research/{research}/experiments', 'ResearchExperimentsController@index')->name('research.experiments');
 
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');

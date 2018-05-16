@@ -16,4 +16,9 @@ class Experiment extends Model
     {
         return $this->belongsTo('App\Research');
     }
+
+    public function participant()
+    {
+        return $this->belongsTo('App\Participant');
+    }
 }

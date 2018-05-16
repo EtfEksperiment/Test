@@ -13,6 +13,6 @@ class Research extends Model
 
     public function experiments()
     {
-        return $this->hasMany('App\Experiment');
+        return $this->hasManyThrough(Experiment::class, Task::class);
     }
 }

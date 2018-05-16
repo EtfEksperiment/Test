@@ -2,17 +2,17 @@
 
 @section('content')
 <div class="content">
-    <h2>Experiments for Research {{$research->name}}</h2>
-    @if(count($research->experiments))
+    <h2>Experiments for Participant {{$participant->name}}</h2>
+    @if($participant->experiments->count())
     <table class="table">
         <thead>
             <tr>
                 <th>Name</th>
-                <th>Description</th>
+                <th>Comment</th>
             </tr>
         </thead>
         <tbody>
-            @foreach ($research->experiments as $experiment)
+            @foreach ($participant->experiments as $experiment)
             <tr>
                 <td><a href="{{ route('experiment.show', $experiment )}}">{{ $experiment->name }}</a></td>
                 <td>{{ $experiment->comment }}</td>
@@ -21,7 +21,7 @@
         </tbody>
     </table>
     @else
-    <p>There is no experiments for this research</p>
+    <p>This participant has not conducted experiments yet</p>
     @endif
 </div>
 @endsection
