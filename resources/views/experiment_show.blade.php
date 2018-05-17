@@ -2,7 +2,7 @@
 
 @section('content')            
 <div class="content">
-    <h2>Experiments for Task <a href="{{route('task.show', $data->task)}}">{{$data->task->name}}</a></h2>
+    <h2>Experiments for Task <a href="{{route('task.show', $experiment->task)}}">{{$experiment->task->name}}</a></h2>
     <table class="table">
         <thead>
             <tr>
@@ -12,8 +12,8 @@
         </thead>
         <tbody>
             <tr>
-                <td>{{ $data->name }}</td>
-                <td>{{ $data->comment }}</td>
+                <td>{{ $experiment->name }}</td>
+                <td>{{ $experiment->comment }}</td>
             </tr>
         </tbody>
     </table>

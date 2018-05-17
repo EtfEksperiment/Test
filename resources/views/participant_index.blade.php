@@ -21,7 +21,7 @@
                     @endforeach
                 </td>
                 <td>
-                    <a href="{{route('experiment.show', $experiment)}}">{{ $participant->experiments->count() }}</a>
+                    <a href="{{route('participant.show', $participant)}}">{{ $participant->experiments->count() }}</a>
                 </td>
             </tr>
             @endforeach

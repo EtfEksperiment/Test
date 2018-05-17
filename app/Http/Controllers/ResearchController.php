@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Research;
+use App\Task;
 use Illuminate\Http\Request;
 
 class ResearchController extends Controller
@@ -38,8 +39,13 @@ class ResearchController extends Controller
     {
         $research = new Research;
         $research->name = $request->name;
-        
         $research->save();
+
+        $task = new Task;
+        $task->name = $request->input('task');
+        $research->tasks()->save($task);
+        
+        //$research->save();
         return redirect()->route('research.index');
     }
 
@@ -83,8 +89,14 @@ class ResearchController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Research $research)
     {
-        //
+        return ($research);
+    }
+
+    public function getTasks(Research $research)
+    {
+        $tasks = $research->tasks;
+        return json_encode($tasks);
     }
 }

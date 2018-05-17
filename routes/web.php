@@ -31,3 +31,4 @@ Route::get('/research/{research}/experiments', 'ResearchExperimentsController@in
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/research/{research}/tasks', 'ResearchController@getTasks')->name('research.tasks');

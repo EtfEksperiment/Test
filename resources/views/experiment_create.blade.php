@@ -15,20 +15,40 @@
                     <label for="comment">Comment</label>
                     <input type="text" name="comment" class="form-control" id="comment" placeholder="Enter comment">
                 </div>
+                
+                <div class="form-group">
+                    <label for="participant">participant</label>
+                    <input type="text" name="participant" class="form-control" id="participant" placeholder="Enter participant">
+                </div>
+
+
 
                 <div class="form-group">
-                    <label for="select">Select Task</label>
-                    <select name="task" class="form-control" id="select">
-                        @foreach ($tasks as $task)
-                        <option value="{{ $task->id }}">{{ $task->name }}</option>
+                    <label for="research">Select Research</label>
+                    <select name="research" class="form-control" id="research">
+                        @foreach ($researches as $research)
+                        <option value="{{ $research->id }}">{{ $research->name }}</option>
                         @endforeach
                     </select>
                 </div>
                 
+                <div class="form-group">
+                    <label for="task">Select Task</label>
+                    <select name="task" class="form-control" id="task">
+                        <option>--Task--</option>
+                        <!--@foreach ($researches as $research)
+                        <option value="{{ $research->id }}">{{ $research->name }}</option>
+                        @endforeach-->
+                    </select>
+                </div>
+                <div class="col-md-2"><span id="loader"><i class="fa fa-spinner fa-3x fa-spin"></i></span></div>
+                
                 <input class="btn btn-primary" type="submit" value="Submit">
+
             </form>
         </div>
     </div>
-    
+    <script src="{{ asset('js/custom.js') }}"></script>    
 </div>
+
 @endsection

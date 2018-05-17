@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Experiment;
+use App\Research;
 
 class ExperimentController extends Controller
 {
@@ -31,8 +32,8 @@ class ExperimentController extends Controller
      */
     public function create()
     {
-        $tasks = \App\Task::all();
-        return view('experiment_create', ['tasks' => $tasks]);
+        $researches = Research::all();
+        return view('experiment_create', compact('researches'));
     }
 
     /**
@@ -45,7 +46,10 @@ class ExperimentController extends Controller
     {
         $experiment = new Experiment;
 
+
         $experiment->name = $request->name;
+        $experiment->task_id = $request->task;
+        $experiment->participant_id = $request->participant;
         $experiment->comment = $request->comment;
 
         $experiment->save();
@@ -60,9 +64,7 @@ class ExperimentController extends Controller
      */
     public function show(Experiment $experiment)
     {
-        //$post = \App\Experiment::find($id);
-        //dd($experiment->task);
-        return view('experiment_show', ['data' => $experiment]);
+        return view('experiment_show', compact('experiment'));
     }
 
     /**
@@ -71,11 +73,9 @@ class ExperimentController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Experiment $experiment)//($id)
+    public function edit(Experiment $experiment)
     {
-        //
-        //$experiment = \App\Experiment::find($id);
-        return view('experiment_edit', ['data' => $experiment]);
+        return view('experiment_edit', compact('experiment'));
     }
 
     /**
@@ -90,6 +90,7 @@ class ExperimentController extends Controller
         //
         $experiment = \App\Experiment::find($id);
         $experiment->name = $request->name;
+        $experiment->task_id = $request->task_id;
         $experiment->comment = $request->comment;
         $experiment->save();
         

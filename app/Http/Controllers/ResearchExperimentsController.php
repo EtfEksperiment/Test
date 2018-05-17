@@ -11,4 +11,9 @@ class ResearchExperimentsController extends Controller
     {
     	return view('research_experiments_index', compact('research'));
    	}
+
+   	/*public function  (Research $research)
+    {
+    	return view('research_experiments_index', compact('research'));
+   	}*/
 }
