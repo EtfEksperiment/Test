@@ -37,14 +37,15 @@ class ResearchController extends Controller
      */
     public function store(Request $request)
     {
+        //dd($request->input('task'));
         $research = new Research;
         $research->name = $request->name;
         $research->save();
-
-        $task = new Task;
-        $task->name = $request->input('task');
-        $research->tasks()->save($task);
-        
+        foreach ($request->input('task') as $taskVal) {
+            $task = new Task;
+            $task->name = $taskVal;
+            $research->tasks()->save($task);
+        }
         //$research->save();
         return redirect()->route('research.index');
     }

@@ -13,13 +13,13 @@
 				</div>
 
 				<div class="form-group tasks">
-					<label for="comment">
-						Tasks
-						<button type="button" class="btn btn-info add-new"><i class="fa fa-plus"></i></button>
-					</label>
+					<div>
+						<span>Tasks</span>
+						<button type="button" class="btn btn-info add-new float-right"><i class="fa fa-plus"></i></button>
+					</div>
 					<!--<input type="text" name="task" class="form-control" id="task" placeholder="Enter name of task">-->
 					<div class="input-group">
-						<input type="text" name="task" class="form-control" id="task" placeholder="Enter name of task">
+						<input type="text" name="task[]" class="form-control" id="task" placeholder="Enter name of task" >
 						<span class="input-group-btn">
 							<button type="button" class="btn btn-danger remove-one"><i class="fa fa-minus"></i></button>
 						</span>
@@ -42,13 +42,19 @@
 		$(".add-new").on('click', function(){
 			//$(this).attr("disabled", "disabled");
 			var tasks = $(".tasks");
-			var task = '<div class="input-group"><input type="text" name="task" class="form-control" id="task" placeholder="Enter name of task"><span class="input-group-btn"><button type="button" class="btn btn-danger remove-one"><i class="fa fa-minus"></i></button></span></div>' 
+			var task = '<div class="input-group"><input type="text" name="task[]" class="form-control" id="task" placeholder="Enter name of task" multiple><span class="input-group-btn"><button type="button" class="btn btn-danger remove-one"><i class="fa fa-minus"></i></button></span></div>' 
 			$(tasks).append(task);
 		});
 
 		$(".tasks").on('click', ".remove-one", function(){
 			console.log($(this));
-			$(this).parent().parent().remove();
+			console.log(($(".remove-one").length));
+			if(($(".remove-one").length) == 1){
+				alert('You must have at least one Task');
+			} else {
+				$(this).parent().parent().remove();
+			}
+			
 			
 			//$(this).attr("disabled", "disabled");
 			/*var tasks = $(".tasks");

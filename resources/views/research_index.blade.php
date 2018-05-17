@@ -7,8 +7,8 @@
         <div class="table-title">
             <div class="row">
                 <div class="col-sm-8"><h2>Research <b>Details</b></h2></div>
-                <div class="col-sm-4">
-                    <button type="button" class="btn btn-info add-new"><i class="fa fa-plus"></i><a href="{{route('research.create')}}">Add New</a> </button>
+                <div class="col-sm-4 float-right">
+                    <button type="button" class="btn btn-info  add-new"><a style="color:white;" href="{{route('research.create')}}"><i class="fa fa-plus" style="color:white;"></i> Add New</a></button>
                 </div>
             </div>
         </div>
