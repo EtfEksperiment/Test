@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Task;
+use App\Research;
 use Illuminate\Http\Request;
 
 class TaskController extends Controller
@@ -12,12 +13,22 @@ class TaskController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
         //
-        $tasks = \App\Task::all();
+        $tasks = Task::with(['research'])->filter($request)->get();
+        $researches = Research::all();
 
-        return view('task_index', ['data'=>$tasks]);
+        //return view('task_index', ['data'=>$tasks]);
+        return view('task_index', compact('tasks', 'researches'));
+    }
+
+
+    protected function getFilters() 
+    {
+        return [
+            'research' => ResearchFilter::class,
+        ];
     }
 
     /**

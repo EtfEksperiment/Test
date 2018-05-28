@@ -15,4 +15,9 @@ class Research extends Model
     {
         return $this->hasManyThrough(Experiment::class, Task::class);
     }
+
+    public function groups()
+    {
+        return $this->hasMany('App\Group');
+    }
 }

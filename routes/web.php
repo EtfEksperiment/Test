@@ -20,6 +20,7 @@ Route::resource('experiment', 'ExperimentController');
 Route::resource('task', 'TaskController');
 Route::resource('research', 'ResearchController');
 Route::resource('participant', 'ParticipantController');
+Route::resource('group', 'GroupController');
 Auth::routes();
 
 Route::get('/home', 'ResearchController@index');

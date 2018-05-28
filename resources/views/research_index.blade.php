@@ -7,7 +7,7 @@
         <div class="table-title">
             <div class="row">
                 <div class="col-sm-8"><h2>Research <b>Details</b></h2></div>
-                <div class="col-sm-4 float-right">
+                <div class="col-sm-4">
                     <button type="button" class="btn btn-info  add-new"><a style="color:white;" href="{{route('research.create')}}"><i class="fa fa-plus" style="color:white;"></i> Add New</a></button>
                 </div>
             </div>
@@ -17,6 +17,7 @@
                 <tr>
                     <th>Name</th>
                     <th>Tasks</th>
+                    <th>Groups</th>
                     <th>Conducted Experiments</th>
                     <th>Actions</th>
                 </tr>
@@ -28,6 +29,11 @@
                     <td>
                         @foreach ($research->tasks as $task)
                         <a href="{{route('task.show', $task)}}">{{ $task->name }}</a>
+                        @endforeach
+                    </td>
+                    <td>
+                        @foreach ($research->groups as $group)
+                        <a href="{{route('group.show', $group)}}">{{ $group->name }}</a>
                         @endforeach
                     </td>
                     <td>
