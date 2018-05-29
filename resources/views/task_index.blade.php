@@ -15,7 +15,14 @@
                             @endforeach
                         </select>
                     </th>
-                    <th>Name</th>
+                    <th>
+                        <select name="task" id="taskSelect">
+                            <option>Task</option>
+                            @foreach ($tasks as $task)
+                            <option>{{ $task->name }}</option>
+                            @endforeach
+                        </select>
+                    </th>
                     <th>Description</th>
                     <th>Experiments Conducted</th>
                 </tr>
@@ -35,16 +42,23 @@
 </div>
 <script type="text/javascript">
     $(document).ready(function() {
-        
+
         $('#researchSelect').on('change', function(){
-            
-            console.log($(this).attr('name'));
-            var newURL = updateQueryStringParameter(window.location.pathname, $(this).attr('name'), $(this).val());
+            //console.log($(this).attr('name'));
+            var newURL = updateQueryStringParameter(window.location.href, $(this).attr('name'), $(this).val());
+            $(location).attr('href', newURL);
+            //console.log($(this).val());
+        });
+
+        $('#taskSelect').on('change', function(){
+            //console.log($(this).attr('name'));
+            var newURL = updateQueryStringParameter(window.location.href, $(this).attr('name'), $(this).val());
             $(location).attr('href', newURL);
             //console.log($(this).val());
         });
     });
     function updateQueryStringParameter(uri, key, value) {
+        console.log(uri);
         var re = new RegExp("([?&])" + key + "=.*?(&|$)", "i");
         var separator = uri.indexOf('?') !== -1 ? "&" : "?";
         if (uri.match(re)) {
